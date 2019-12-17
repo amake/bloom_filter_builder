@@ -1,7 +1,4 @@
-library bloom_builder;
+import 'package:bloom_filter_builder/src/builder.dart';
+import 'package:build/build.dart';
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+Builder bloomFilterBuilder(BuilderOptions _) => const BloomFilterBuilder();
