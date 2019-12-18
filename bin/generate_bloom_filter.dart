@@ -39,7 +39,7 @@ void main(List<String> args) {
 }
 
 String generateOne(File file, double probability) {
-  final lines = file.readAsLinesSync();
+  final lines = file.readAsLinesSync().where((line) => line.isNotEmpty);
   final name = p.basenameWithoutExtension(file.path);
   return const BloomFilterGenerator().generate(lines, probability, name);
 }

@@ -25,7 +25,7 @@ class BloomFilterBuilder implements Builder {
     final inFile = File(buildStep.inputId.path);
     Iterable items;
     try {
-      items = await inFile.readAsLines();
+      items = inFile.readAsLinesSync().where((line) => line.isNotEmpty);
     } on Exception catch (e) {
       log?.severe(e);
       items = [];
