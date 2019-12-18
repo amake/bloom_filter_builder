@@ -9,6 +9,7 @@ import 'package:path/path.dart' as p;
 
 const kDefaultProbability = 0.1;
 const kOutputExtension = '.g.dart';
+final _kInvalidIdentifierPattern = RegExp(r'[^a-zA-Z0-9$]');
 
 class BloomFilterBuilder implements Builder {
   const BloomFilterBuilder([this._options = BuilderOptions.empty])
@@ -74,8 +75,8 @@ import 'package:bloom_filter/bloom_filter.dart';
     final bits = bloomFilter.bitVectorListForStorage();
     final items = bloomFilter.length;
     final size = bloomFilter.bitVectorSize;
-    final filterName =
-        '${name.toLowerCase()}BloomFilter'.replaceAll(r'[^a-zA-Z0-9$]', '_');
+    final filterName = '${name.toLowerCase()}BloomFilter'
+        .replaceAll(_kInvalidIdentifierPattern, '_');
     buf.write(
         'BloomFilter $filterName = BloomFilter.withSizeAndBitVector($size, $items, Uint32List.fromList([');
     for (final bit in bits) {
