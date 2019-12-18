@@ -74,7 +74,8 @@ import 'package:bloom_filter/bloom_filter.dart';
     final bits = bloomFilter.bitVectorListForStorage();
     final items = bloomFilter.length;
     final size = bloomFilter.bitVectorSize;
-    final filterName = '${name.toLowerCase()}BloomFilter';
+    final filterName =
+        '${name.toLowerCase()}BloomFilter'.replaceAll(r'[^a-zA-Z0-9$]', '_');
     buf.write(
         'BloomFilter $filterName = BloomFilter.withSizeAndBitVector($size, $items, Uint32List.fromList([');
     for (final bit in bits) {
