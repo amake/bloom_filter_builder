@@ -36,15 +36,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.4.0"
-  bit_vector:
+  bit_array:
     dependency: transitive
     description:
-      path: "."
-      ref: master
-      resolved-ref: d3b5bcf79dd4b09254c7783e268251c499b498aa
-      url: "https://github.com/jimmyff/bit_vector.git"
-    source: git
-    version: "0.4.1"
+      name: bit_array
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
   bloom_filter:
     dependency: "direct main"
     description:

@@ -3,7 +3,7 @@ builders:
     import: 'package:bloom_filter_builder/bloom_filter_builder.dart'
     builder_factories:
       - 'bloomFilterBuilder'
-    build_extensions: {'.bloom.txt': ['.dart']}
+    build_extensions: {'.txt': ['.g.dart']}
     auto_apply: root_package
     build_to: cache
     defaults:
