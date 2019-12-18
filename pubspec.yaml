@@ -1,8 +1,8 @@
 name: bloom_filter_builder
-description: A new Flutter package project.
+description: Tools for generating bloom filters at build time
 version: 0.0.1
-author:
-homepage:
+author: Aaron Madlon-Kay
+homepage: https://github.com/amake/bloom_filter_builder
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
