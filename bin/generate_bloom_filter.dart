@@ -23,7 +23,6 @@ void main(List<String> args) {
   var probability = kDefaultProbability;
   if (results['probability'] != null) {
     probability = double.parse(results['probability'].toString());
-    print('Probability: $probability');
   }
 
   for (final arg in results.rest) {
