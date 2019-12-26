@@ -10,6 +10,7 @@ import 'package:path/path.dart' as p;
 const kDefaultProbability = 0.1;
 const kOutputExtension = '.g.dart';
 final _kInvalidIdentifierPattern = RegExp(r'[^a-zA-Z0-9$]');
+final _kIdentifierSplitPattern = RegExp('[-_]');
 
 class BloomFilterBuilder implements Builder {
   const BloomFilterBuilder([this._options = BuilderOptions.empty])
@@ -75,7 +76,7 @@ import 'package:bloom_filter/bloom_filter.dart';
     final bits = bloomFilter.bitVectorListForStorage();
     final items = bloomFilter.length;
     final size = bloomFilter.bitVectorSize;
-    final filterName = '${name.toLowerCase()}BloomFilter'
+    final filterName = '${_lowerCamelCase(name)}BloomFilter'
         .replaceAll(_kInvalidIdentifierPattern, '_');
     buf.write(
         'BloomFilter $filterName = BloomFilter.withSizeAndBitVector($size, $items, Uint32List.fromList([');
@@ -83,5 +84,15 @@ import 'package:bloom_filter/bloom_filter.dart';
       buf..write(bit.toString())..write(', ');
     }
     buf.write(']).buffer);');
+  }
+
+  String _camelCase(String str) => str.splitMapJoin(_kIdentifierSplitPattern,
+      onMatch: (_) => '',
+      onNonMatch: (s) =>
+          s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase());
+
+  String _lowerCamelCase(String str) {
+    final camel = _camelCase(str);
+    return camel.substring(0, 1).toLowerCase() + camel.substring(1);
   }
 }

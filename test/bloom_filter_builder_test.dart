@@ -41,4 +41,16 @@ void main() {
         'BloomFilter test2_0BloomFilter = '
         'BloomFilter.withSizeAndBitVector(12, 2, Uint32List.fromList([2421, ]).buffer);');
   });
+
+  test('lower camel case', () {
+    const builder = BloomFilterGenerator();
+    final filter = builder.newBloomFilter(_data);
+    expect(filter.containsAll(_data), true);
+    final buf = StringBuffer();
+    builder.serializeFilter(filter, 'test2.0-foo-bar', buf);
+    expect(
+        buf.toString(),
+        'BloomFilter test2_0FooBarBloomFilter = '
+        'BloomFilter.withSizeAndBitVector(12, 2, Uint32List.fromList([2421, ]).buffer);');
+  });
 }
