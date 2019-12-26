@@ -16,7 +16,7 @@ void main() {
     expect(
         buf.toString(),
         'BloomFilter testBloomFilter = '
-        'BloomFilter.withSizeAndBitVector(12, 2, Uint32List.fromList([2421, ]).buffer);');
+        'BloomFilter.withSizeAndBitVector(12, 2, Uint32List.fromList(const [2421, ]).buffer);');
   });
 
   test('(de)serialization', () {
@@ -39,7 +39,7 @@ void main() {
     expect(
         buf.toString(),
         'BloomFilter test2_0BloomFilter = '
-        'BloomFilter.withSizeAndBitVector(12, 2, Uint32List.fromList([2421, ]).buffer);');
+        'BloomFilter.withSizeAndBitVector(12, 2, Uint32List.fromList(const [2421, ]).buffer);');
   });
 
   test('lower camel case', () {
@@ -51,6 +51,6 @@ void main() {
     expect(
         buf.toString(),
         'BloomFilter test2_0FooBarBloomFilter = '
-        'BloomFilter.withSizeAndBitVector(12, 2, Uint32List.fromList([2421, ]).buffer);');
+        'BloomFilter.withSizeAndBitVector(12, 2, Uint32List.fromList(const [2421, ]).buffer);');
   });
 }

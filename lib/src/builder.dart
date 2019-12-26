@@ -79,7 +79,7 @@ import 'package:bloom_filter/bloom_filter.dart';
     final filterName = '${_lowerCamelCase(name)}BloomFilter'
         .replaceAll(_kInvalidIdentifierPattern, '_');
     buf.write(
-        'BloomFilter $filterName = BloomFilter.withSizeAndBitVector($size, $items, Uint32List.fromList([');
+        'BloomFilter $filterName = BloomFilter.withSizeAndBitVector($size, $items, Uint32List.fromList(const [');
     for (final bit in bits) {
       buf..write(bit.toString())..write(', ');
     }
